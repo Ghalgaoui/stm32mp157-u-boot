@@ -547,3 +547,13 @@ bool bsec_dbgswenable(void)
 
 	return false;
 }
+
+/* bsec IP is not present in device tee, manage IP address by platdata */
+static struct stm32mp_bsec_platdata stm32_bsec_platdata = {
+	.base = STM32_BSEC_BASE,
+};
+
+U_BOOT_DEVICE(stm32mp_bsec) = {
+	.name = "stm32mp_bsec",
+	.platdata = &stm32_bsec_platdata,
+};
